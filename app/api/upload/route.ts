@@ -14,7 +14,6 @@ export async function POST(req: Request) {
   }
 
   const file = req.body || "";
-  console.log(file)
   const filename = req.headers.get("x-vercel-filename") || "file.txt";
   const contentType = req.headers.get("content-type") || "text/plain";
   const fileType = `.${contentType.split("/")[1]}`;
