@@ -1,9 +1,9 @@
 import CustomEditor from "@/components/editor";
 
-const Notebook = () => {
+const Notebook = ({ params }: { params: { noteId: string } }) => {
   return (
     <main className="flex justify-center">
-      <CustomEditor />
+      <CustomEditor noteId={params.noteId} />
     </main>
   );
 };
