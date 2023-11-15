@@ -30,7 +30,7 @@ const CustomEditor = ({ noteId }: Props) => {
           <div
             contentEditable={true}
             data-ph="Title"
-            className="outline-none w-[calc(100%-6rem)] mx-8 mt-4 px-5 py-3 text-5xl font-semibold border-l-2 border-transparent focus:border-inherit"
+            className="outline-none w-[calc(100%-6rem)] mx-8 mt-4 px-5 py-3 text-5xl font-semibold border-l-2 border-transparent focus:border-inherit leading-tight"
             onInput={updateTitle}
           >
             {storedTitle}
