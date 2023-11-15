@@ -1,11 +1,22 @@
-import { UserButton } from "@clerk/nextjs";
+"use client";
+
+import { randomId } from "@/lib/randomId";
+import { useRouter } from "next/navigation";
 
 const Sidenav = () => {
+  const router = useRouter();
+  const handleNewNote = () => {
+    const id = randomId(8);
+    router.push(`/notes/${id}`);
+  };
+
   return (
     <aside className="w-60 h-screen border-r p-1.5 flex flex-col">
       <div className="flex gap-2 items-center">
-        <UserButton afterSignOutUrl="/" />
-        <button className="hover:bg-slate-100 w-full py-2 rounded-md border-2 border-slate-300 hover:border-slate-200 duration-150">
+        <button
+          onClick={handleNewNote}
+          className="hover:bg-slate-100 w-full py-2 rounded-md border-2 border-slate-300 hover:border-slate-200 duration-150"
+        >
           New Notebook
         </button>
       </div>
