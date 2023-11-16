@@ -56,9 +56,10 @@ const Sidenav = () => {
           <div className="flex justify-between w-full items-center">
             <Link
               href={`/notes/${id}`}
-              className="flex-1 p-2 rounded-md duration-150 hover:bg-slate-100"
+              className="relative flex-1 overflow-hidden p-2 rounded-md duration-150 hover:bg-slate-100"
             >
-              <h3 className="line-clamp-1 text-ellipsis">{title}</h3>
+              <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-r from-transparent to-white"/>
+              <h3 className="w-max">{title}</h3>
             </Link>
             <button
               className="px-3 h-full rounded-md duration-150 hover:bg-slate-100"
