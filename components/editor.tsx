@@ -21,7 +21,7 @@ const CustomEditor = ({ noteId }: Props) => {
 
   useEffect(() => {
     setStoredTitle(window.localStorage.getItem(titleKey) || "");
-  }, []);
+  }, [titleKey]);
 
   return (
     <div className="w-full h-[calc(100vh-3.5rem)] overflow-y-scroll">

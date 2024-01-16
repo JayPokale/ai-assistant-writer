@@ -39,7 +39,7 @@ const Sidenav = () => {
       }
     }
     setNoteBooks(arr.reverse());
-  }, []);
+  }, [storageKeyPrefix, userId]);
 
   return (
     <aside className="w-60 h-screen border-r p-1.5 flex flex-col">
@@ -53,12 +53,12 @@ const Sidenav = () => {
       </div>
       <div className="flex-1 flex flex-col my-2">
         {noteBooks.map(({ id, title }: noteBook, i: number) => (
-          <div className="flex justify-between w-full items-center">
+          <div key={id} className="flex justify-between w-full items-center">
             <Link
               href={`/notes/${id}`}
               className="relative flex-1 overflow-hidden p-2 rounded-md duration-150 hover:bg-slate-100"
             >
-              <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-r from-transparent to-white"/>
+              <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-r from-transparent to-white" />
               <h3 className="w-max">{title}</h3>
             </Link>
             <button
@@ -72,7 +72,7 @@ const Sidenav = () => {
                 ]);
                 if (pathname.startsWith("/notes")) {
                   const cur = pathname.slice(7);
-                  console.log(cur)
+                  console.log(cur);
                   if (cur === id) router.push("/dashboard");
                 }
               }}
