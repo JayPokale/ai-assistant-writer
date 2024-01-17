@@ -5,7 +5,7 @@ const Dashboard = () => {
         Welcome to our incredible
       </h2>
       <h1 className="font-semibold text-7xl text-center">
-        AI <span className="text-purple-600 font-bold">assistant</span>{" "}
+        AI Blog <span className="text-purple-600 font-bold">assistant</span>{" "}
       </h1>
     </main>
   );
