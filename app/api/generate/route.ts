@@ -29,7 +29,7 @@ export async function POST(req: Request): Promise<Response> {
           content:
             "You are an AI writing assistant that continues existing text based on context from prior text. " +
             "Give more weight/priority to the later characters than the beginning ones. " +
-            "Limit your response to no more than 1000 characters, but make sure to construct complete sentences.",
+            "Limit your response to no more than 500 characters, but make sure to construct complete sentences.",
         },
         {
           role: "user",
@@ -55,55 +55,57 @@ export async function POST(req: Request): Promise<Response> {
 }
 
 // Server 2
-// import { StreamingTextResponse } from "ai";
+/*
+import { StreamingTextResponse } from "ai";
 
-// export const runtime = "edge";
+export const runtime = "edge";
 
-// export async function POST(): Promise<Response> {
-//   const serverUri = process.env.GO_SERVER_URI;
+export async function POST(): Promise<Response> {
+  const serverUri = process.env.GO_SERVER_URI;
 
-//   if (!serverUri || serverUri === "") {
-//     return new Response(
-//       "Missing SERVER_URI – make sure to add it to your .env file.",
-//       {
-//         status: 400,
-//       }
-//     );
-//   }
+  if (!serverUri || serverUri === "") {
+    return new Response(
+      "Missing SERVER_URI – make sure to add it to your .env file.",
+      {
+        status: 400,
+      }
+    );
+  }
 
-//   try {
-//     const response = await fetch(serverUri);
-//     const text = await response.text();
-//     const words = text.split(" ");
+  try {
+    const response = await fetch(serverUri);
+    const text = await response.text();
+    const words = text.split(" ");
 
-//     const generateWords = async function* () {
-//       for (const word of words) {
-//         yield word + " ";
-//         await new Promise((resolve) => setTimeout(resolve, 100));
-//       }
-//     };
+    const generateWords = async function* () {
+      for (const word of words) {
+        yield word + " ";
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+    };
 
-//     const readableStream = new ReadableStream({
-//       async start(controller) {
-//         const iterator = generateWords()[Symbol.asyncIterator]();
+    const readableStream = new ReadableStream({
+      async start(controller) {
+        const iterator = generateWords()[Symbol.asyncIterator]();
 
-//         while (true) {
-//           const { done, value } = await iterator.next();
+        while (true) {
+          const { done, value } = await iterator.next();
 
-//           if (done) {
-//             controller.close();
-//             break;
-//           }
+          if (done) {
+            controller.close();
+            break;
+          }
 
-//           controller.enqueue(value);
-//         }
-//       },
-//     });
+          controller.enqueue(value);
+        }
+      },
+    });
 
-//     return new StreamingTextResponse(readableStream);
-//   } catch {
-//     return new Response(
-//       "There's some error occured while generating api responce"
-//     );
-//   }
-// }
+    return new StreamingTextResponse(readableStream);
+  } catch {
+    return new Response(
+      "There's some error occured while generating api responce"
+    );
+  }
+}
+*/
