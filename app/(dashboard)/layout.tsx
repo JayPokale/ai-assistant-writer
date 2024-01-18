@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar";
 import Sidenav from "@/components/sidenav";
 
 export const metadata: Metadata = {
-  title: "AI Assistant",
+  title: "AI Blog Assistant",
 };
 
 export default function RootLayout({
