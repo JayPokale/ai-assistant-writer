@@ -5,6 +5,7 @@ import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import GenerateImagePopup from "./popup";
 
 type noteBook = { id: string; title: string };
 
@@ -13,6 +14,10 @@ const Sidenav = () => {
   const router = useRouter();
   const { userId } = useAuth();
   const pathname = usePathname();
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const openPopup = () => setPopupOpen(true);
+  const closePopup = () => setPopupOpen(false);
 
   const handleNewNote = () => {
     const id = randomId(8);
@@ -82,6 +87,13 @@ const Sidenav = () => {
           </div>
         ))}
       </div>
+      <button
+        className="hover:bg-slate-100 w-full py-2 rounded-md border-2 border-slate-300 hover:border-slate-200 duration-150"
+        onClick={openPopup}
+      >
+        Generate Image
+      </button>
+      <GenerateImagePopup isOpen={isPopupOpen} onClose={closePopup} />
     </aside>
   );
 };
